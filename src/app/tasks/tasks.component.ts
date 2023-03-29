@@ -10,6 +10,7 @@ export class TasksComponent {
   constructor(private http: HttpClient) { }
 
   tasks: Array<Object> = [];
+  error: any;
 
   ngOnInit(): void {
     this.fetch();
@@ -21,9 +22,10 @@ export class TasksComponent {
 
   fetch(): void {
     this.http.get('http://localhost:8080/api/list')
-      .subscribe((res) => {
-        this.tasks = res as any[];
-      })
+      .subscribe(
+        (res) => { this.tasks = res as any[]; this.error = null; },
+        (err) => { this.error = err; }
+      )
   }
 
   NewTask(newName: any): void {

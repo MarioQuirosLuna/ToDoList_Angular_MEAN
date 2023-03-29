@@ -1,7 +1,18 @@
-<ul class="list-unstyled">
-    <li *ngFor="let item of tasks;">
-        <app-onetask [task]="item" (changeTask)="update()"></app-onetask>
-    </li>
-</ul>
-<input type="text" #newName>
-<button (click)="NewTask(newName)">Guardar</button>
+<div *ngIf="!error">
+    <ul class="list-unstyled" *ngIf="tasks && tasks.length > 0">
+        <li *ngFor="let item of tasks;">
+            <app-onetask [task]="item" (changeTask)="update()"></app-onetask>
+        </li>
+    </ul>
+    <div class="container" *ngIf="!tasks || tasks.length <= 0">
+        <h2>
+            Empty list
+        </h2>
+    </div>
+    <input type="text" #newName>
+    <button (click)="NewTask(newName)">Guardar</button>
+</div>
+<div *ngIf="error" class="alert alert-danger" role="alert">
+    <i class="bi bi-x-octagon-fill p-1"></i>
+    <span>Error en la aplicaci&oacute;n</span>
+</div>
