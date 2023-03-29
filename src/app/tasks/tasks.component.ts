@@ -26,4 +26,15 @@ export class TasksComponent {
       })
   }
 
+  NewTask(newName: any): void {
+    let params = {
+      text: newName.value,
+      done: false
+    }
+    this.http.post('http://localhost:8080/api/list', params)
+      .subscribe(() => {
+        this.fetch();
+      })
+  }
+
 } 

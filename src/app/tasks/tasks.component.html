@@ -3,3 +3,5 @@
         <app-onetask [task]="item" (changeTask)="update()"></app-onetask>
     </li>
 </ul>
+<input type="text" #newName>
+<button (click)="NewTask(newName)">Guardar</button>
