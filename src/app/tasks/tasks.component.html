@@ -1,5 +1,5 @@
 <ul class="list-unstyled">
     <li *ngFor="let item of tasks;">
-        <app-onetask [task]="item"></app-onetask>
+        <app-onetask [task]="item" (changeTask)="update()"></app-onetask>
     </li>
 </ul>

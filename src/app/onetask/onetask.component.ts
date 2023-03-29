@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-onetask',
@@ -9,11 +9,17 @@ import { Component, Input } from '@angular/core';
 export class OnetaskComponent {
   @Input() task: any;
 
+  @Output() changeTask: EventEmitter<any> = new EventEmitter();
+
+
   constructor(private http: HttpClient) { }
 
   deleteTask(task: any): void {
-    this.http.delete('http://localhost:8080/api/list/' + task._id).subscribe(data => {
-      console.log('Deleted task: ' + data);
-    });
+    this.http.delete('http://localhost:8080/api/list/' + task._id)
+      .subscribe(() => {
+        setTimeout(() => {
+          this.changeTask.emit();
+        }, 100);
+      })
   }
 }
