@@ -1,0 +1,12 @@
+<h3>{{ task.text }}</h3>
+<p class="text-muted" *ngIf="task.done">Done: {{ task.done }}</p>
+<p class="text-muted" *ngIf="!task.done">Done: false</p>
+
+<span class="tools">
+    <span class="item edit">
+        <i class="bi bi-pencil-fill"></i>
+    </span>
+    <span class="item delete">
+        <i class="bi bi-trash-fill"></i>
+    </span>
+</span>
