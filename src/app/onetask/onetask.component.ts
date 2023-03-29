@@ -11,6 +11,7 @@ export class OnetaskComponent {
 
   @Output() changeTask: EventEmitter<any> = new EventEmitter();
 
+  showData: boolean = false;
 
   constructor(private http: HttpClient) { }
 
@@ -21,5 +22,16 @@ export class OnetaskComponent {
           this.changeTask.emit();
         }, 100);
       })
+  }
+  editMode(): void {
+    this.showData = true;
+  }
+
+  editTask(task: any, newData: any): void {
+    var params = { text: newData.value };
+    this.http.put('http://localhost:8080/api/list/' + task._id, params)
+      .subscribe(() => {
+        this.changeTask.emit();
+      });
   }
 }
