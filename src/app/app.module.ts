@@ -7,13 +7,15 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { TasksComponent } from './tasks/tasks.component';
+import { OnetaskComponent } from './onetask/onetask.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    TasksComponent
+    TasksComponent,
+    OnetaskComponent
   ],
   imports: [
     BrowserModule,
